@@ -6,7 +6,7 @@ import { BsLaptop, BsCodeSlash } from 'react-icons/bs';
 
 export default function About() {
   const stats = [
-    { icon: <FaUsers className="text-blue-400 text-4xl" />, k: '6+', v: 'Batches Completed' },
+    { icon: <FaUsers className="text-blue-400 text-4xl" />, k: '24+', v: 'Batches Completed' },
     { icon: <FaClock className="text-green-400 text-4xl" />, k: '2 Months', v: 'Internship Duration' },
     { icon: <AiFillSchedule className="text-purple-400 text-4xl" />, k: 'Mon–Fri', v: 'Live Sessions' },
     { icon: <FaCertificate className="text-yellow-400 text-4xl" />, k: 'MSME', v: 'Certified' },

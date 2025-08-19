@@ -98,7 +98,7 @@ export default function Internships() {
             <div className="mt-6 grid grid-cols-3 gap-3 text-center">
               <div className="rounded-xl bg-white/10 p-4">
                 <div className="text-3xl font-display">
-                  <Counter end={6} />+
+                  <Counter end={24} />+
                 </div>
                 <div className="text-xs text-white/70">Batches</div>
               </div>
