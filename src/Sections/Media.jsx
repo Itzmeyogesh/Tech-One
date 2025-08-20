@@ -2,8 +2,8 @@ import React from "react";
 
 // Import videos from assets folder
 import video1 from "../assets/Media.mp4";
-import video2 from "../assets/Media.mp4";
-import video3 from "../assets/Media.mp4";
+import video2 from "../assets/session.mp4";
+import video3 from "../assets/session.mp4";
 
 export default function Media() {
   const videos = [
