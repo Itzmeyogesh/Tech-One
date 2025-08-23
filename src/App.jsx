@@ -8,10 +8,12 @@ import About from "./Sections/About.jsx";
 import Services from "./Sections/Services.jsx";
 import Internships from "./Sections/Internships.jsx";
 import Contact from "./Sections/Contact.jsx";
-import Media from "./Sections/Media.jsx"; // Careers will open this Media section
+import Media from "./Sections/Media.jsx";   // Careers will open this Media section
+import Careers from "./Sections/Careers.jsx";
 
 export default function App() {
   useEffect(() => {
+    // Enable dark mode by default
     document.documentElement.classList.add("dark");
   }, []);
 
@@ -21,6 +23,7 @@ export default function App() {
         <Navbar />
         <main className="pt-20 bg-radial">
           <Routes>
+            {/* Homepage */}
             <Route
               path="/"
               element={
@@ -33,7 +36,12 @@ export default function App() {
                 </>
               }
             />
-            <Route path="/media" element={<Media />} /> {/* Careers/Media */}
+
+            {/* Media section */}
+            <Route path="/media" element={<Media />} />
+
+            {/* Careers page */}
+            <Route path="/careers" element={<Careers />} />
           </Routes>
         </main>
         <Footer />

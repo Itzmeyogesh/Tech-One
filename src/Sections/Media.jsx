@@ -15,11 +15,9 @@ export default function Media() {
   const videos = [
     { id: 1, title: "Life at Our Company", src: video1 },
     { id: 2, title: "Team Collaboration", src: video2 },
-    { id: 3, title: "Office Tour", src: video3 },
     { id: 4, title: "Team Building Event", src: video4 },
     { id: 5, title: "Training Session", src: video6 },
     { id: 6, title: "Success Stories", src: video5 },
-    { id: 7, title: "Innovation at Work", src: video8 },
   ];
 
   return (
