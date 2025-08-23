@@ -9,6 +9,7 @@ const items = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "internships", label: "Internships" },
+  { id: "media", label: "Media" },   // ✅ Added Media here
   { id: "contact", label: "Contact" },
 ];
 
@@ -39,8 +40,7 @@ export default function Navbar() {
             className="h-10 w-10 rounded-xl shadow-soft"
           />
           <span className="font-display text-xl tracking-wide">
-            Technical{" "}
-            <span className="gradient-text font-bold">One</span>
+            Technical <span className="gradient-text font-bold">One</span>
           </span>
           <span className="ml-3 px-2 py-0.5 text-xs rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">
             MSME Certified
@@ -64,9 +64,9 @@ export default function Navbar() {
             </ScrollLink>
           ))}
 
-          {/* Careers goes to /media route */}
+          {/* Careers as SEPARATE PAGE */}
           <Link
-            to="/media"
+            to="/careers"
             className="cursor-pointer rounded-xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:opacity-90 shadow-soft"
           >
             Careers
@@ -101,9 +101,9 @@ export default function Navbar() {
               </ScrollLink>
             ))}
 
-            {/* Careers (route link) */}
+            {/* Careers as separate PAGE */}
             <Link
-              to="/media"
+              to="/careers"
               onClick={() => setOpen(false)}
               className="block rounded-xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-4 py-2 text-slate-900 font-semibold text-center"
             >
