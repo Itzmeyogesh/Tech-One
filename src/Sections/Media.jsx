@@ -1,25 +1,21 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { PlayCircle } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { PlayCircle, X } from "lucide-react";
 
-// ✅ Import videos
-import video1 from "../assets/Media.mp4";
+// ✅ Import only available videos
+import video1 from "../assets/Session4.mp4";
 import video2 from "../assets/Session1.mp4";
-import video3 from "../assets/session.mp4";
 import video4 from "../assets/Session2.mp4";
 import video5 from "../assets/Session5.mp4";
-import video6 from "../assets/Session4.mp4";
-import video8 from "../assets/Session6.mp4";
 
 export default function Media() {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
   const videos = [
     { id: 1, title: "Life at Our Company", src: video1 },
     { id: 2, title: "Team Collaboration", src: video2 },
-    { id: 3, title: "Innovation in Action", src: video3 },
-    { id: 4, title: "Team Building Event", src: video4 },
-    { id: 5, title: "Training Session", src: video6 },
-    { id: 6, title: "Success Stories", src: video5 },
-    { id: 7, title: "Future Vision", src: video8 },
+    { id: 3, title: "Team Building Event", src: video4 },
+    { id: 4, title: "Success Stories", src: video5 },
   ];
 
   return (
@@ -29,9 +25,6 @@ export default function Media() {
     >
       {/* 🔹 Animated Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-200 via-purple-100 to-indigo-300 dark:from-slate-900 dark:via-indigo-900 dark:to-slate-950" />
-
-      {/* 🔹 Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] opacity-10 dark:opacity-5" />
 
       {/* 🔹 Floating Blobs */}
       <motion.div
@@ -46,9 +39,17 @@ export default function Media() {
       />
 
       {/* 🔹 Section Title */}
-      <h2 className="relative text-4xl font-bold text-center mb-14 text-gray-900 dark:text-white">
-        🎥 Media & Careers at Our Company
-      </h2>
+      <div className="relative text-center mb-14">
+        <h2 className="text-4xl font-bold text-gray-900 dark:text-white inline-block relative">
+          🎥 Media & Careers at Our Company
+          <motion.div
+            className="absolute left-0 right-0 -bottom-2 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
+        </h2>
+      </div>
 
       {/* 🔹 Video Grid */}
       <div className="relative grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -57,23 +58,27 @@ export default function Media() {
             key={video.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05, rotate: 1 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition relative backdrop-blur-lg bg-white/60 dark:bg-white/10 border border-white/20"
+            className="group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-fuchsia-400/30 transition relative backdrop-blur-lg bg-white/60 dark:bg-white/10 border border-white/20 cursor-pointer"
+            onClick={() => setSelectedVideo(video.src)}
           >
             <div className="relative">
               <video
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 preload="metadata"
-                controls
-                poster="https://via.placeholder.com/600x400.png?text=Loading+Video"
+                muted
+                loop
+                autoPlay
+                playsInline
               >
                 <source src={video.src} type="video/mp4" />
                 Your browser does not support HTML video.
               </video>
 
               {/* Play Icon Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition">
                 <PlayCircle className="w-16 h-16 text-white drop-shadow-lg" />
               </div>
             </div>
@@ -86,6 +91,41 @@ export default function Media() {
           </motion.div>
         ))}
       </div>
+
+      {/* 🔹 Modal Video Player */}
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="relative max-w-4xl w-full bg-black rounded-2xl overflow-hidden shadow-2xl"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="absolute top-3 right-3 text-white hover:text-red-400"
+              >
+                <X size={28} />
+              </button>
+
+              <video
+                className="w-full max-h-[80vh] object-contain"
+                controls
+                autoPlay
+              >
+                <source src={selectedVideo} type="video/mp4" />
+              </video>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
