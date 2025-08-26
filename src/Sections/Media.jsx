@@ -23,8 +23,7 @@ export default function Media() {
       id="media"
       className="
         relative scroll-mt-24
-        min-h-[50vh] sm:min-h-screen   /* smaller min-height for mobile */
-        py-10 sm:py-20 px-4 sm:px-6    /* tighter padding on mobile */
+        pt-8 pb-4 sm:py-20 px-4 sm:px-6   /* tighter padding on mobile */
         overflow-hidden
       "
     >
@@ -33,18 +32,18 @@ export default function Media() {
 
       {/* 🔹 Floating Blobs */}
       <motion.div
-        className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-purple-300/30 dark:bg-purple-600/30 blur-3xl"
+        className="absolute -top-32 -left-32 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-purple-300/30 dark:bg-purple-600/30 blur-3xl"
         animate={{ y: [0, 40, 0], x: [0, 20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-pink-200/30 dark:bg-pink-500/30 blur-3xl"
+        className="absolute bottom-0 right-0 w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-pink-200/30 dark:bg-pink-500/30 blur-3xl"
         animate={{ y: [0, -30, 0], x: [0, -15, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* 🔹 Section Title */}
-      <div className="relative text-center mb-8 sm:mb-14">
+      <div className="relative text-center mb-6 sm:mb-14">
         <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white inline-block relative">
           🎥 Media & Careers at Our Company
           <motion.div
@@ -57,7 +56,7 @@ export default function Media() {
       </div>
 
       {/* 🔹 Video Grid */}
-      <div className="relative grid gap-5 sm:gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="relative grid gap-4 sm:gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {videos.map((video, i) => (
           <motion.div
             key={video.id}
@@ -66,12 +65,12 @@ export default function Media() {
             whileHover={{ scale: 1.05, rotate: 1 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="group rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-fuchsia-400/30 transition relative backdrop-blur-lg bg-white/60 dark:bg-white/10 border border-white/20 cursor-pointer"
+            className="group rounded-lg sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-fuchsia-400/30 transition relative backdrop-blur-lg bg-white/60 dark:bg-white/10 border border-white/20 cursor-pointer"
             onClick={() => setSelectedVideo(video.src)}
           >
             <div className="relative">
               <video
-                className="w-full h-48 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-40 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 preload="metadata"
                 muted
                 loop
@@ -84,12 +83,12 @@ export default function Media() {
 
               {/* Play Icon Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition">
-                <PlayCircle className="w-12 h-12 sm:w-16 sm:h-16 text-white drop-shadow-lg" />
+                <PlayCircle className="w-10 h-10 sm:w-16 sm:h-16 text-white drop-shadow-lg" />
               </div>
             </div>
 
             <div className="p-3 sm:p-5 bg-white/80 dark:bg-slate-900/50">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
+              <h3 className="text-sm sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
                 {video.title}
               </h3>
             </div>
@@ -101,7 +100,7 @@ export default function Media() {
       <AnimatePresence>
         {selectedVideo && (
           <motion.div
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
