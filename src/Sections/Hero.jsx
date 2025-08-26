@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden flex items-center justify-center min-h-[60vh] sm:min-h-screen"
+      className="relative overflow-hidden flex items-center justify-center min-h-[35vh] sm:min-h-screen"
     >
       {/* Logo background watermark */}
       <div
