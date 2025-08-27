@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden flex items-center justify-center min-h-[35vh] sm:min-h-screen"
+      className="relative overflow-hidden flex items-center justify-center min-h-[60vh] sm:min-h-screen"
     >
       {/* Logo background watermark */}
       <div
@@ -14,10 +14,10 @@ export default function Hero() {
         style={{ backgroundImage: `url(${logo})` }}
       />
 
-      {/* Floating blobs */}
-      <div className="absolute -top-20 -left-10 h-48 w-48 sm:h-[28rem] sm:w-[28rem] rounded-full bg-cyan-400/30 blur-3xl animate-blob" />
-      <div className="absolute top-40 -right-10 h-40 w-40 sm:h-[24rem] sm:w-[24rem] rounded-full bg-fuchsia-400/30 blur-3xl animate-blob [animation-delay:3s]" />
-      <div className="absolute bottom-0 left-1/3 h-36 w-36 sm:h-[20rem] sm:w-[20rem] rounded-full bg-amber-400/20 blur-3xl animate-blob [animation-delay:6s]" />
+      {/* Floating blobs (hidden on mobile) */}
+      <div className="hidden sm:block absolute -top-20 -left-10 h-48 w-48 sm:h-[28rem] sm:w-[28rem] rounded-full bg-cyan-400/30 blur-3xl animate-blob" />
+      <div className="hidden sm:block absolute top-40 -right-10 h-40 w-40 sm:h-[24rem] sm:w-[24rem] rounded-full bg-fuchsia-400/30 blur-3xl animate-blob [animation-delay:3s]" />
+      <div className="hidden sm:block absolute bottom-0 left-1/3 h-36 w-36 sm:h-[20rem] sm:w-[20rem] rounded-full bg-amber-400/20 blur-3xl animate-blob [animation-delay:6s]" />
 
       {/* Extra glowing rings (hide on small) */}
       <div className="absolute inset-0 flex items-center justify-center">
@@ -25,14 +25,14 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-24 text-center">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-20 text-center">
         {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-display text-2xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent animate-gradient"
+          className="font-display text-xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent animate-gradient"
         >
           Build Your Future with Technical One
         </motion.h1>
@@ -43,7 +43,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="mx-auto mt-3 max-w-md sm:max-w-3xl text-sm sm:text-base md:text-lg text-white/80"
+          className="mx-auto mt-2 max-w-md sm:max-w-3xl text-xs sm:text-base md:text-lg text-white/80"
         >
           MSME-certified online internships and professional services in Web/App Development,
           Graphics Design, Java, Power BI, and AI/ML.
@@ -55,7 +55,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-5 sm:mt-8 text-sm sm:text-lg md:text-xl text-white/90"
+          className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl text-white/90"
         >
           <span className="opacity-80">We specialize in </span>
           <span className="font-semibold text-cyan-400">
@@ -87,7 +87,7 @@ export default function Hero() {
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0, transition: { delay: 0.3, staggerChildren: 0.15 } }
           }}
-          className="mt-6 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+          className="mt-5 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         >
           <motion.a
             href="#internships"
@@ -106,8 +106,8 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 -z-10">
+      {/* Floating particles (hidden on mobile for cleaner look) */}
+      <div className="absolute inset-0 -z-10 hidden sm:block">
         {[...Array(20)].map((_, i) => (
           <span
             key={i}
