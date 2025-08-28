@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden flex items-center justify-center min-h-[30vh] sm:min-h-screen"
+      className="relative overflow-hidden flex items-center justify-center min-h-[50vh] sm:min-h-screen max-h-[80vh] sm:max-h-none"
     >
       {/* Logo background watermark */}
       <div
@@ -25,14 +25,14 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-20 text-center">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-2 sm:py-20 text-center">
         {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-display text-xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent animate-gradient"
+          className="font-display text-lg sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent animate-gradient"
         >
           Build Your Future with Technical One
         </motion.h1>
@@ -55,7 +55,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl text-white/90"
+          className="mt-3 sm:mt-8 text-xs sm:text-lg md:text-xl text-white/90"
         >
           <span className="opacity-80">We specialize in </span>
           <span className="font-semibold text-cyan-400">
@@ -87,19 +87,19 @@ export default function Hero() {
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0, transition: { delay: 0.3, staggerChildren: 0.15 } }
           }}
-          className="mt-5 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+          className="mt-4 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         >
           <motion.a
             href="#internships"
             whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(34,211,238,0.6)" }}
-            className="rounded-lg sm:rounded-xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-4 sm:px-6 py-2 sm:py-3 font-semibold text-slate-900 shadow-soft transition text-sm sm:text-base"
+            className="rounded-lg sm:rounded-xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-4 sm:px-6 py-2 sm:py-3 font-semibold text-slate-900 shadow-soft transition text-xs sm:text-base"
           >
             Explore Internships
           </motion.a>
           <motion.a
             href="#services"
             whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(255,255,255,0.3)" }}
-            className="rounded-lg sm:rounded-xl border border-white/20 px-4 sm:px-6 py-2 sm:py-3 font-semibold hover:bg-white/10 text-sm sm:text-base"
+            className="rounded-lg sm:rounded-xl border border-white/20 px-4 sm:px-6 py-2 sm:py-3 font-semibold hover:bg-white/10 text-xs sm:text-base"
           >
             View Services
           </motion.a>
