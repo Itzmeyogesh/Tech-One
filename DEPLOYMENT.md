@@ -1,52 +1,142 @@
-# Tech-One Deployment Guide for Linux Server
+# Tech-One Deployment Guide for 1GB RAM Linux Server
+
+## ⚠️ IMPORTANT: 1GB RAM Limitation
+
+**npm install will FAIL on 1GB RAM servers** due to esbuild compilation. 
+
+**✅ RECOMMENDED APPROACH:** Build locally and deploy only the `dist` folder.
 
 ## Server Requirements
-- Node.js: 20.19.x
+- Node.js: 20.19.x (only needed if serving with Vite)
 - RAM: 1GB minimum
 - OS: Linux
 
-## Deployment Steps
+---
 
-### 1. Clone the repository
+## 🚀 Method 1: Build Locally (RECOMMENDED)
+
+This is the **BEST** approach for 1GB servers.
+
+### On Your Windows Machine:
+
+```powershell
+# Run the build script
+.\build-local.ps1
+
+# Or manually:
+npm install
+npm run build
+```
+
+### Transfer to Server:
+
+```bash
+# Option 1: Using SCP
+scp -r dist/ user@your-server:/path/to/Tech-One/
+
+# Option 2: Using Git (commit dist folder first)
+# Or use FTP/SFTP client
+```
+
+### On Your Linux Server:
+
+```bash
+cd Tech-One
+chmod +x serve-dist.sh
+
+# Serve the static files (uses only ~10-20MB RAM!)
+./serve-dist.sh
+```
+
+**That's it!** No node_modules needed on server. Uses minimal memory.
+
+---
+
+## 🔧 Method 2: Build on Server (Requires 2GB+ Swap)
+
+Only if you MUST build on the server:
+
+### 1. Add Swap Space (REQUIRED)
+
+```bash
+# Create 2GB swap
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
+# Make it permanent
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# Verify
+free -h
+```
+
+### 2. Clone and Build
+
 ```bash
 git clone <your-repo-url>
 cd Tech-One
-```
+chmod +x build.sh serve-dist.sh
 
-### 2. Make scripts executable
-```bash
-chmod +x build.sh start-server.sh
-```
-
-### 3. Build the project
-```bash
+# This will likely take 10-15 minutes
 ./build.sh
 ```
 
-This will:
-- Install dependencies with memory optimization
-- Build the production bundle with limited memory (768MB)
-- Output static files to the `dist` directory
+### 3. Serve
 
-### 4. Start the server
 ```bash
-./start-server.sh
+./serve-dist.sh
 ```
 
-Or using npm:
+---
+
+## 📊 Deployment Options
+
+### Option A: Python HTTP Server (No Dependencies)
+
 ```bash
-npm run serve
+cd dist
+python3 -m http.server 4173 --bind 0.0.0.0
+```
+**Memory:** ~5MB
+
+### Option B: Serve Package
+
+```bash
+npm install -g serve
+serve -s dist -l tcp://0.0.0.0:4173
+```
+**Memory:** ~15MB
+
+### Option C: PM2 (Best for Production)
+
+```bash
+npm install -g pm2
+pm2 serve dist 4173 --spa --name tech-one
+pm2 save
+pm2 startup
+```
+**Memory:** ~20MB  
+**Benefits:** Auto-restart, monitoring, logs
+
+---
+
+## 🎯 Access Your Application
+
+```
+http://your-server-ip:4173
 ```
 
-The application will be accessible at `http://your-server-ip:4173`
+---
 
-## Memory Optimization
+## ⚡ Optimizations Applied
 
-The project is configured to work with 1GB RAM servers:
-- Build process limited to 768MB of memory
-- Server process limited to 512MB of memory
-- Code splitting to reduce bundle sizes
-- Console logs removed in production
+- **Code Splitting:** Vendor chunks separated by library
+- **Minification:** esbuild (faster, less memory than terser)
+- **No Source Maps:** Reduces build size and memory
+- **Static Serving:** Only 10-20MB RAM vs 200MB+ with Vite dev
+- **Asset Optimization:** Efficient chunk naming and hashing
 
 ## Troubleshooting
 

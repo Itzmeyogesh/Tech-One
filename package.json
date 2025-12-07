@@ -5,11 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "NODE_OPTIONS='--max-old-space-size=768' vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "serve": "vite preview --host 0.0.0.0 --port 4173",
-    "build:prod": "npm run build && npm run serve"
+    "serve": "vite preview --host 0.0.0.0 --port 4173"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
