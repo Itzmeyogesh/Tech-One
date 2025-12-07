@@ -8,7 +8,7 @@ import Hero from "./Sections/Hero.jsx";
 import About from "./Sections/About.jsx";
 import Services from "./Sections/Services.jsx";
 import Internships from "./Sections/Internships.jsx";
-import Media from "./Sections/Media.jsx";
+// import Media from "./Sections/Media.jsx";
 import Contact from "./Sections/Contact.jsx";
 import Careers from "./Sections/Careers.jsx";
 
@@ -33,7 +33,7 @@ export default function App() {
                   <About />
                   <Services />
                   <Internships />
-                  <Media />   {/* ✅ Media included in main page */}
+                  {/* <Media />   ✅ Media included in main page */}
                   <Contact />
                 </>
               }

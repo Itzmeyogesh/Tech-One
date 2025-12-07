@@ -10,7 +10,7 @@ const items = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "internships", label: "Internships" },
-  { id: "media", label: "Media" },
+  // { id: "media", label: "Media" },
   { id: "contact", label: "Contact" },
 ];
 
