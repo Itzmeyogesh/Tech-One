@@ -8,6 +8,7 @@ import {
   FaTasks,
   FaCodeBranch,
   FaBriefcase,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 
 export default function Contact() {
@@ -47,6 +48,7 @@ export default function Contact() {
           >
             {/* Animated border glow */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 opacity-30 blur-xl group-hover:opacity-60 transition duration-500"></div>
+
             <div className="relative z-10 grid gap-5">
               {/* Name */}
               <div className="relative">
@@ -77,14 +79,31 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Shorter Button with animation */}
+              {/* Submit Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-2 rounded-lg bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-slate-900 shadow-md transition-all"
+                className="mt-2 w-fit rounded-lg bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-slate-900 shadow-md transition-all"
               >
                 Send Message 🚀
               </motion.button>
+
+              {/* Address with Google Map link */}
+              <motion.a
+                href="https://www.google.com/maps/search/?api=1&query=Near+Keshav+Complex+Tupenagar+Hadapsar+Pune+411028"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="mt-4 flex items-start gap-3 text-sm text-white/70 hover:text-cyan-400 transition"
+              >
+                <FaMapMarkerAlt className="mt-1 text-cyan-400" />
+                <span>
+                  Near Keshav Complex, Tupenagar,<br />
+                  Hadapsar, Pune – 411028
+                </span>
+              </motion.a>
             </div>
           </motion.form>
 
@@ -99,10 +118,10 @@ export default function Contact() {
             <div className="font-semibold text-lg flex items-center gap-2">
               Why choose <span className="text-cyan-400">Technical One</span>?
             </div>
+
             <ul className="mt-4 space-y-3 text-white/80">
               <li className="flex items-center gap-2 hover:text-cyan-400 transition">
-                <FaCertificate className="text-cyan-400" /> MSME-certified
-                venture
+                <FaCertificate className="text-cyan-400" /> MSME-certified venture
               </li>
               <li className="flex items-center gap-2 hover:text-cyan-400 transition">
                 <FaChalkboardTeacher className="text-cyan-400" /> Hands-on,
@@ -121,6 +140,7 @@ export default function Contact() {
                 employability
               </li>
             </ul>
+
             <div className="mt-6 text-sm text-white/60">
               Prefer email? Write to:{" "}
               <span className="text-white/90 font-medium">
