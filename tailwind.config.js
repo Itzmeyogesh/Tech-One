@@ -11,6 +11,15 @@ export default {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
         display: ['Space Grotesk', 'Poppins', 'ui-sans-serif', 'system-ui'],
       },
+
+      colors: {
+        primary: "#0f172a",     // dark navy
+        secondary: "#06b6d4",   // cyan
+        accent: "#6366f1",      // indigo
+        background: "#020617",  // deep dark
+        text: "#e2e8f0"
+      },
+
       keyframes: {
         blob: {
           '0%': { transform: 'translate(0px, 0px) scale(1)' },
@@ -28,11 +37,13 @@ export default {
           '100%': { backgroundPosition: '-200% 0' },
         },
       },
+
       animation: {
         blob: 'blob 12s infinite',
         float: 'float 6s ease-in-out infinite',
         shine: 'shine 6s linear infinite',
       },
+
       boxShadow: {
         soft: '0 10px 40px rgba(0,0,0,0.2)',
       },
