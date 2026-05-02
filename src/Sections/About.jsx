@@ -12,7 +12,7 @@ import { BsLaptop, BsCodeSlash } from "react-icons/bs";
 export default function About() {
   const stats = [
     {
-      icon: <FaUsers className="text-blue-400 text-4xl" />,
+      icon: <FaUsers className="text-secondary text-4xl" />,
       k: "24+",
       v: "Batches Completed",
     },
@@ -22,7 +22,7 @@ export default function About() {
       v: "Internship Duration",
     },
     {
-      icon: <AiFillSchedule className="text-purple-400 text-4xl" />,
+      icon: <AiFillSchedule className="text-accent text-4xl" />,
       k: "Mon–Fri",
       v: "Live Sessions",
     },
@@ -55,26 +55,22 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white"
+      className="relative overflow-hidden bg-background text-text"
     >
-      {/* Background glow orbs */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
+      {/* Background glow */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-secondary/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
 
-      {/* Divider line */}
-      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="relative mx-auto max-w-7xl px-6 py-16">
 
-      <div className="relative mx-auto max-w-7xl px-6 py-16 sm:py-20">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="font-display text-3xl md:text-5xl font-extrabold text-center"
         >
           About{" "}
-          <span className="bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent animate-gradient">
+          <span className="gradient-text">
             Technical One
           </span>
         </motion.h2>
@@ -83,64 +79,71 @@ export default function About() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-6 text-gray-300 leading-relaxed max-w-3xl mx-auto text-center text-lg"
+          className="mt-6 text-gray-300 max-w-3xl mx-auto text-center"
         >
-          Established in <strong>June 2024</strong>, Technical One delivers{" "}
-          <strong>online internships</strong> and{" "}
-          <strong>professional services</strong> across Web/App Development and
-          Graphics Design, along with training in{" "}
-          <strong>Java</strong>, <strong>Power BI</strong>, and{" "}
-          <strong>AI/ML</strong>. We are <strong>MSME-certified</strong> and
-          have successfully completed{" "}
-          <span className="text-cyan-300 font-semibold">6 internship batches</span>.  
-          Internships run for <strong>2 months</strong> with{" "}
-          <strong>weekly projects</strong> reviewed in{" "}
-          <strong>live Mon–Fri sessions</strong>.  
-          (Note: internships are <strong>unpaid</strong>.)
+          Established in <strong>June 2024</strong>, Technical One delivers
+          online internships and professional services across Web/App Development,
+          Graphics Design, Java, Power BI, and AI/ML.
         </motion.p>
 
-        {/* Stats Cards */}
+        {/* Stats */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((card, i) => (
             <motion.div
               key={card.k}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg flex flex-col items-center text-center hover:bg-white/10 transition-all duration-300"
+              transition={{ delay: 0.1 * i }}
+              whileHover={{ scale: 1.05 }}
+              className="rounded-2xl bg-primary p-6 text-center shadow-soft"
             >
               {card.icon}
-              <div className="font-display text-3xl mt-3">{card.k}</div>
-              <div className="mt-1 text-gray-400">{card.v}</div>
+              <div className="text-3xl mt-3">{card.k}</div>
+              <div className="text-gray-400">{card.v}</div>
             </motion.div>
           ))}
         </div>
 
-        {/* Points List */}
-        <motion.ul
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-12 grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto"
-        >
+        {/* Points */}
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
           {points.map((item, i) => (
-            <motion.li
+            <li
               key={i}
-              whileHover={{ scale: 1.03, x: 5 }}
-              className="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition"
+              className="flex gap-4 p-4 rounded-xl bg-primary hover:scale-105 transition"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-slate-900 text-xl shadow-md">
-                {item.icon}
-              </span>
+              <span className="text-secondary text-xl">{item.icon}</span>
               <p className="text-gray-300">{item.text}</p>
-            </motion.li>
+            </li>
           ))}
-        </motion.ul>
+        </ul>
+
+        {/* ✅ Founder Section (FIXED POSITION) */}
+        <div className="mt-16 grid md:grid-cols-2 gap-6">
+
+          {/* Founder */}
+          <div className="p-6 rounded-2xl bg-primary shadow-soft hover:scale-105 transition">
+            <h3 className="text-xl font-bold text-secondary">Founder</h3>
+            <p className="mt-2 text-text">
+              Yogesh Maske is the Founder of Technical One, leading innovation
+              in web development, app solutions, and internship programs.
+            </p>
+            <p className="mt-2 text-sm text-gray-400">
+              📧 maskeyogeish@gmail.com <br />
+              📞 9518568806
+            </p>
+          </div>
+
+          {/* Co-Founder */}
+          <div className="p-6 rounded-2xl bg-primary shadow-soft hover:scale-105 transition">
+            <h3 className="text-xl font-bold text-accent">Co-Founder</h3>
+            <p className="mt-2 text-text">
+              Smita Nair is the Co-Founder of Technical One, contributing to
+              strategic growth, training programs, and operations.
+            </p>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
